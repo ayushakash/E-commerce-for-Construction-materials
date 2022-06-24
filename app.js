@@ -8,7 +8,7 @@ app.use(express.static(__dirname + '/public'));
 
 app.get('/',(req,res)=>{
 
-    res.render('login');
+    res.render('index');
 })
 
 app.listen(3000,()=>{
