@@ -1,0 +1,160 @@
+body {
+    background-image: url("https://images.pexels.com/photos/139309/pexels-photo-139309.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+
+    height: 100vh;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.links a:hover {
+
+    background-color: transparent;
+    color: green;
+    border: 2px solid orangered;
+    border-radius: 25px;
+}
+.logo {
+
+    background-color: aliceblue;
+}
+.logo img {
+    float: left;
+    width: 200px;
+    height: auto;
+
+}
+
+.links a {
+
+    padding: 5px;
+    margin: 6px;
+    font-size: 20px;
+    text-decoration: none;
+    float: right;
+    color: black;
+    transition: 0.5s ease;
+    font-weight: bold;
+    border: 2px solid black;
+    border-radius: 15px
+    
+
+}
+
+.links {
+    display: flex;
+    justify-content: right;
+
+    list-style-type: none;
+
+}
+
+.navbar {
+    /* background-color: yellowgreen; */
+    width: 100%;
+    /* position: absolute; */
+    top: 0;
+    /* margin-top: -1%; */
+    /* margin-left: 16%; */
+    min-height: 80px;
+}
+
+img {
+    float: left;
+}
+
+.header {
+    background-color: aqua;
+}
+
+/* .foot{ */
+
+    /* position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 15%;
+    background-color: blue;
+    color: white; */
+
+/* } */
+
+.body-form {
+    margin-top: 0;
+    background-color: aqua;
+    margin: auto;
+
+}
+
+.container{
+    display: flex;
+    float: left;
+    margin-top: 20%;
+}
+
+.input-div{
+    border: 2px solid black;
+    height: 350px;
+    width: 50%;
+    margin-left: 25%;
+    border-radius: 5px;
+    transition: 0.5s ease;
+}
+.input-div:hover{
+
+    
+    border-color:red;
+}
+
+.input-box{
+
+    margin-left: 30%;
+    padding: 25px;
+    
+}
+
+.inp{
+
+    height: 25px;
+    margin-top: 10px;
+    border-radius: 5px
+    
+}
+.sub-btn{
+
+    margin-top: 10px;
+    height:35px;
+    width: 150px;
+    transition: 0.5s ease;
+    font-weight: bold;
+    border: 2px solid black;
+    border-radius: 5px
+    
+}
+
+.sub-btn:hover {
+
+    background-color: transparent;
+    color: green;
+    border: 2px solid orangered;
+    border-radius: 5px;
+    width: 200px;
+    background-color: #fff;
+    
+}
+    
+.lbl{
+
+    margin-left: auto;
+    font-weight: bold;
+}
+.inp-otp{
+
+
+    height: 25px;
+    margin-top: 10px;
+    border-radius: 5px
+    
+}
+h1{
+
+    margin-left: 45%;
+}
