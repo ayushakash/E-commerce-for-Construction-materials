@@ -11,6 +11,18 @@ app.get('/',(req,res)=>{
     res.render('index');
 })
 
+app.get('/login',(req,res)=>{
+
+    res.render('login');
+})
+ 
+
+app.get('/products',(req,res)=>{
+
+    res.render('products');
+})
+
+
 app.listen(3000,()=>{
 
     console.log('server running at port 3000');
