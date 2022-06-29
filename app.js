@@ -22,6 +22,11 @@ app.get('/products',(req,res)=>{
     res.render('products');
 })
 
+app.get('/cart',(req,res)=>{
+
+    res.render('cart');
+})
+
 
 app.listen(3000,()=>{
 
