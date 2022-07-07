@@ -1,16 +1,24 @@
+html{
+
+    font-family: Monospace ;
+   }
+
+
 body {
-    background-image: url("https://images.pexels.com/photos/139309/pexels-photo-139309.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+    
 
     height: 100vh;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background: rgb(2,0,36);
+background: linear-gradient(35deg, rgba(2,0,36,1) 0%, rgba(30,121,9,1) 39%, rgba(0,212,255,1) 100%);
+    
 }
 
 .links a:hover {
 
     background-color: transparent;
-    color: green;
+    color:white;
     border: 2px solid orangered;
-    border-radius: 25px;
+    border-radius: 15px;
 }
 .logo {
 
@@ -58,7 +66,7 @@ body {
 }
 
 img {
-    float: left;
+    
 }
 
 .header {
@@ -156,7 +164,7 @@ img {
 }
 h1{
 
-    margin-left: 45%;
+    margin-left: 35%;
 }
 
 .card1 {
@@ -205,4 +213,92 @@ h1{
 
     background-color: black;
     filter:drop-shadow(5);
+    size: 500px,500px;
+}
+.cart-table{
+
+height:300px;
+width: 800px;
+border: 2px solid black;
+margin-left: 15%;
+border-radius: 5px;
+
+}
+.cost{
+
+    
+    margin-left: 20%;
+    color: black;
+}
+
+.cart-btn{
+
+    margin-left:20%;
+    height:35px;
+    width: 150px;
+    transition: 0.5s ease;
+    font-weight: bold;
+    border: 2px solid black;
+    border-radius: 5px
+}
+.cart-btn:hover {
+
+    background-color: transparent;
+    color: green;
+    border: 2px solid orangered;
+    border-radius: 5px;
+    width: 200px;
+    background-color: #fff;
+    
+}
+
+.final-cost{
+
+    margin-left: 20%;
+    color:darkgoldenrod;
+}
+
+.conf-head{
+
+height: 100px;
+width: auto;
+
+margin-left: 35%;
+
+
+}
+
+.plc{
+
+float:center;
+height:35px;
+width: 150px;
+transition: 0.5s ease;
+font-weight: bold;
+border: 2px solid black;
+border-radius: 5px;
+margin-top: 10px;
+
+
+}
+.plc:hover {
+
+    background-color: transparent;
+    color: green;
+    border: 2px solid orangered;
+    border-radius: 5px;
+    width: 200px;
+    background-color: #fff;
+    
+}
+
+.conf-info{
+
+    padding-left: 15%;
+    margin-top: 50px;
+}
+.address{
+
+    height:75px;
+
 }

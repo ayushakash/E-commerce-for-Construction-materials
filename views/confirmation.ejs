@@ -1,0 +1,44 @@
+<%- include ('header'); -%>
+
+<div class="conf-head">
+<span style="font-size: 40px;">Order Total: Rs <%-y-%></span> 
+
+
+
+</div>
+
+
+
+<div class="conf-info">
+
+<h3>Your Information </h3>
+<p>Your Name : <%-name-%></p>
+<p>Your email :<%-email-%></p>
+<p>Your phone :<%-phone-%></p>
+
+
+</div>
+<form action="/confirmed" method="post">
+<div class="conf-info">
+
+<h3>Your Shipping address</h3>
+<textarea class="address" placeholder="enter your delivery address "></textarea>
+<div><button class="plc" type="submit">place Order</button></div>
+</form>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<%- include ('footer'); -%>

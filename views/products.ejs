@@ -1,67 +1,70 @@
 <%- include('header'); -%>
-
+<form action="/products" method="post">
     <div class="card-group">
         <div class="card">
             <img
                 class="card-img-top"
-                src="/mortar.png"
+                src="/mortar1.jpg"
                 alt="Card image cap">
                 <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a wider card with supporting text below as a
-                        natural lead-in to additional content. This content is a little bit longer.</p>
-                    <button class="sub-btn" onclick="cart()">Add to Cart</button>
+                    <h5 class="card-title">Mortar</h5>
+                    <input type="hidden" id="custId" name="name" value="mortar">
+                    <p class="card-text"></p>
+                        <input type="number" placeholder="enter quantity" name="mortar"> 
+                        
+                    <button class="sub-btn" type="submit" onclick="change()" id="btn">Add to Cart</button>
                     <p class="card-text">
-                        <small class="text-muted">Last updated 3 mins ago</small>
+                        
                     </p>
                 </div>
             </div>
             <div class="card">
                 <img
                     class="card-img-top"
-                    src="/cement.png"
+                    src="/cement1.jpg"
                     alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">Cement</h5>
-                        <p class="card-text">Acc cement</p>
-                        <button class="sub-btn">Add to Cart</button>
+                        <p class="card-text"></p>
+                        <input type="number" placeholder="enter quantity" name="cement">
+                        <button class="sub-btn" type="submit" onclick="change1()" id="btn1">Add to Cart</button>
                         <p class="card-text">
-                            <small class="text-muted">Last updated 3 mins ago</small>
+                            
                         </p>
                     </div>
                 </div>
                 <div class="card">
                     <img
                         class="card-img-top"
-                        src="/steel.png"
+                        src="/steel1.jpg"
                         alt="Card image cap">
                         <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a
-                                natural lead-in to additional content. This card has even longer content than
-                                the first to show that equal height action.</p>
-                            <button class="sub-btn">Add to Cart</button>
+                            <h5 class="card-title">Steel</h5>
+                            <p class="card-text"></p>
+                                
+                                    <input type="number" placeholder="enter quantity" name="steel">
+                            <button class="sub-btn" type="submit" onclick="change2()" id="btn2">Add to Cart</button>
                             <p class="card-text">
-                                <small class="text-muted">Last updated 3 mins ago</small>
+                                
                             </p>
                         </div>
                     </div>
                     <div class="card">
                         <img
                             class="card-img-top"
-                            src=""
+                            src="/ring.jpg"
                             alt="Card image cap">
                             <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a wider card with supporting text below as a
-                                    natural lead-in to additional content. This card has even longer content than
-                                    the first to show that equal height action.</p>
-                                <button class="sub-btn">Add to Cart</button>
+                                <h5 class="card-title">Stirrups</h5>
+                                <p class="card-text"></p>
+                                    <input type="number" placeholder="enter quantity" name="ring">
+                                <button class="sub-btn" type="submit" onclick="change3()" id="btn3">Add to Cart</button>
                                 <p class="card-text">
-                                    <small class="text-muted">Last updated 3 mins ago</small>
+                                    
                                 </p>
                             </div>
                         </div>
                     </div>
+                </form>
 
                     <%- include('footer'); -%>
