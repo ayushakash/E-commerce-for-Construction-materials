@@ -1,24 +1,29 @@
-html{
-
-    font-family: Monospace ;
-   }
+html *
+{
+   
+   
+    font-family: 'Edu QLD Beginner', cursive;
+}
 
 
 body {
     
+    background: F9F9C5;
+    font-family: 'Edu QLD Beginner', cursive;
 
-    height: 100vh;
-    background: rgb(2,0,36);
-background: linear-gradient(35deg, rgba(2,0,36,1) 0%, rgba(30,121,9,1) 39%, rgba(0,212,255,1) 100%);
-    
+
+     height: 100vh;
+     background-color: #85FFBD;
+background-image: linear-gradient(45deg, #85FFBD 0%, #FFFB7D 100%);
+   
 }
 
 .links a:hover {
 
     background-color: transparent;
-    color:white;
-    border: 2px solid orangered;
-    border-radius: 15px;
+    color:darkmagenta;
+    
+    
 }
 .logo {
 
@@ -39,9 +44,9 @@ background: linear-gradient(35deg, rgba(2,0,36,1) 0%, rgba(30,121,9,1) 39%, rgba
     text-decoration: none;
     float: right;
     color: black;
-    transition: 0.5s ease;
+    transition: 0.2s ease;
     font-weight: bold;
-    border: 2px solid black;
+    
     border-radius: 15px
     
 
@@ -99,18 +104,15 @@ img {
 }
 
 .input-div{
-    border: 2px solid black;
-    height: 350px;
+    
+    
+    height: auto;
     width: 50%;
     margin-left: 25%;
     border-radius: 5px;
     transition: 0.5s ease;
 }
-.input-div:hover{
 
-    
-    border-color:red;
-}
 
 .input-box{
 
@@ -122,8 +124,9 @@ img {
 .inp{
 
     height: 25px;
-    margin-top: 10px;
-    border-radius: 5px
+    margin-top: 0px;
+    border-radius: 5px;
+    width: 300px;
     
 }
 .sub-btn{
@@ -153,6 +156,7 @@ img {
 
     margin-left: auto;
     font-weight: bold;
+    margin-top: 10px;
 }
 .inp-otp{
 
@@ -164,7 +168,8 @@ img {
 }
 h1{
 
-    margin-left: 35%;
+    margin-left: 42%;
+    font-family: 'Edu QLD Beginner', cursive;
 }
 
 .card1 {
@@ -200,11 +205,13 @@ h1{
 .card{
 
     margin: 20px;
+    height: 500px;
     
 }
 .card-body{
-    max-height: 200px;
-    height: 100%;
+    /* max-height: 200px; */
+    /* height: 100%; */
+
     
     
     
@@ -217,11 +224,11 @@ h1{
 }
 .cart-table{
 
-height:300px;
+height:auto;
 width: 800px;
-border: 2px solid black;
+
 margin-left: 15%;
-border-radius: 5px;
+
 
 }
 .cost{
@@ -263,7 +270,7 @@ border-radius: 5px;
 height: 100px;
 width: auto;
 
-margin-left: 35%;
+margin-left: 25%;
 
 
 }
@@ -293,12 +300,21 @@ margin-top: 10px;
 }
 
 .conf-info{
-
-    padding-left: 15%;
+    
+    margin-left: 10%;
     margin-top: 50px;
+    flex-basis: 500px
 }
 .address{
 
-    height:75px;
+    height: 100px;
+    width:200px;
 
+}
+
+.conf-box{
+    justify-content: center;
+    display: flex;
+    padding-left: 10%;
+    
 }

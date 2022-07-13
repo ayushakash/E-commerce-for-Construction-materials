@@ -50,4 +50,4 @@ function verify(){
 
     console.log(13);
 }
-
+module.exports.change1=change1;

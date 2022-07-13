@@ -6,9 +6,9 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + '/public'));
 const mongoose = require('mongoose');
 
-const totalCost = require('./public/controller');
+const change = require('/home/ayush/Desktop/projects/chardeevari/public/controller.js');
 var total = "";
-var mc,
+let mc,
     cc,
     sc,
     rc = "";
@@ -84,7 +84,7 @@ app.post('/confirmed', (req, res) => {
 })
 
 app.post('/products', (req, res) => {
-
+    
     function totalCost() {
         var mortar = req.body.mortar;
         var cement = req.body.cement;
