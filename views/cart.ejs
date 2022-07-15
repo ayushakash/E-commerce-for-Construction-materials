@@ -1,26 +1,32 @@
 <%- include ('header'); -%>
 
-<h1 class="cart-head">Your Cart</h1>
-<form action="/confirmation" method="post">    
-<div class="cart-table">
-
-    
-    <h3 class="cost">Cost for mortar is :<%-mc-%></h3>
-    <h3 class="cost">Cost for cement is :<%-cc-%></h3>
-    <h3 class="cost">Cost for steel is :<%-sc-%></h3>
-    <h3 class="cost">Cost for ring is :<%-rc-%></h3>
-    <h3 class="final-cost">Your Total cost is <%-y-%></h3>
-    <button class="cart-btn" type="submit" >Place Order</button>
+<div class="conf-head">
+<span style="font-size: 30px;">Hello <span style="color: red;"><%-name-%></span><%-y-%></span> 
 
 
 
 </div>
 
+<div class="conf-box">
+
+<div class="conf-info">
+
+<h3><span style="color:blueviolet ;"> Your Information </span></h3>
+<h5> Name : <%-name-%></h5>
+<h5> email :<%-email-%></h5>
+<h5> phone :<%-phone-%></h5>
+
+
+</div>
+<form action="/confirmed" method="post">
+<div class="conf-info">
+
+<h3 ><span style="color:blueviolet ;">Your Shipping address</span></h3>
+<textarea class="address" placeholder="enter your delivery address " name="address"></textarea>
+<div><button class="plc" type="submit">place Order</button></div>
 </form>
-
-
-
-
+</div>
+</div>
 
 
 

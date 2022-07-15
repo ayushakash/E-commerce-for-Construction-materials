@@ -1,0 +1,38 @@
+<%- include ('header'); -%>
+
+<h1 class="cart-head">Your Cart</h1>
+<form action="/confirmation" method="post">    
+<div class="cart-table">
+
+    
+    <h3 class="cost">Cost for mortar is :<%-mc-%></h3>
+    <h3 class="cost">Cost for cement is :<%-cc-%></h3>
+    <h3 class="cost">Cost for steel is :<%-sc-%></h3>
+    <h3 class="cost">Cost for ring is :<%-rc-%></h3>
+    <h3 class="final-cost">Your Total cost is <%-y-%></h3>
+    <button class="cart-btn" type="submit" >Place Order</button>
+
+
+
+</div>
+
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<%- include ('footer'); -%>

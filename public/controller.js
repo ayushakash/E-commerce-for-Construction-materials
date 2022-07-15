@@ -1,4 +1,7 @@
-
+var nodemailer = require('nodemailer');
+const express = require('express');
+const app = express();
+app.set('view engine', 'ejs');
 
 function totalCost(){
 
@@ -50,4 +53,36 @@ function verify(){
 
     console.log(13);
 }
-module.exports.change1=change1;
+
+
+///////////////////////////////////email function/////////////////////////////////
+
+function sendEmail(name,email,total,address){
+
+const transporter = nodemailer.createTransport({
+  host: 'smtp.hostinger.com',
+  port: 465,
+  auth: {
+      user: 'info@chardeevari.in',
+      pass: 'AbhinavAyush@9'
+  }
+});
+
+ transporter.sendMail({
+  from: 'info@chardeevari.in',
+  to: email,
+  subject:'Order Confirmed with Chardeevari',
+  html: '<h1>'+'Hello ' +name+ ','+ '</h1>' +' <h1 style="color:#ff5e14"> Your order with chardeevari construction was confirmed!</h1>' + '<h2>'+`Your order value of Rs. ` + total +
+  ' will be delivered to ' + '</h2>' + '<h1>Address:-</h1>' + '<h2 style="color:blue">'+ address  + '</h2>'+'<br>'+" within 2 hours"  +'<br>'+ '<br>'+ "Thankyou for shopping with us" +'<br>' + 'Team Chardeevari',
+  dsn: {
+    id: 'some random message specific id',
+    return: 'headers',
+    notify: 'success',
+    recipient: 'sender@example.com'
+}
+      
+});
+}
+///////////////////////////////////////////////////////////////////////////
+
+module.exports.sendEmail=sendEmail;

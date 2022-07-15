@@ -5,17 +5,15 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + '/public'));
 const mongoose = require('mongoose');
+const passport = require('passport');
+const cookieSession = require('cookie-session');
+require('./passport');
 
-const change = require('/home/ayush/Desktop/projects/chardeevari/public/controller.js');
+const sendEmail = require(__dirname + '/public/controller.js');
 var total = "";
-let mc,
-    cc,
-    sc,
-    rc = "";
-var name,
-    email,
-    phone,
-    password;
+let mc,cc,sc,rc;
+;
+let name, email,phone,password,address;
 
 app.get('/', (req, res) => {
 
@@ -40,7 +38,7 @@ app.get('/login', (req, res) => {
 
 app.post('/login', (req, res) => {
 
-    if ((req.body.email === email) && (req.body.pwd === password)) {
+    if ((req.body.email === email ) && (req.body.pwd === password )) {
         
         res.render('products');
     } else {
@@ -54,20 +52,22 @@ app.get('/products', (req, res) => {
     res.render('products');
 })
 
-app.get('/confirmation', (req, res) => {
+let x=` Your Total Order Value is : Rs `;
 
-    res.render('confirmation', {
+app.get('/cart', (req, res) => {
 
-        y: total,
+    res.render('cart', {
+
+        y: x + total,
         name: name,
         email: email,
         phone: phone
     });
 })
 
-app.post('/confirmation', (req, res) => {
+app.post('/cart', (req, res) => {
 
-    res.redirect('/confirmation');
+    res.redirect('/cart');
 
 })
 
@@ -79,7 +79,12 @@ app.get('/confirmed', (req, res) => {
 
 app.post('/confirmed', (req, res) => {
 
+    address=req.body.address;
+    
+    console.log(address,email,name,total)
     res.redirect('confirmed');
+    sendEmail.sendEmail(name,email,total,address);
+    
 
 })
 
@@ -102,7 +107,7 @@ app.post('/products', (req, res) => {
 
 })
 
-app.get('/cart', (req, res) => {
+app.get('/extra', (req, res) => {
 
     res.render('cart', {
 
@@ -114,7 +119,47 @@ app.get('/cart', (req, res) => {
     });
 })
 
-app.listen(3000, () => {
+////////////////////google page apis///////////////////////
+app.use(cookieSession({
+    name: 'google-auth-session',
+    keys: ['key1', 'key2']
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+    
+  
+// Auth 
+app.get('/auth' , passport.authenticate('google', { scope:
+    [ 'email', 'profile' ]
+}));
+  
+// Auth Callback
+app.get( '/auth/callback',
+    passport.authenticate( 'google', {
+        successRedirect: '/auth/callback/success',
+        failureRedirect: '/auth/callback/failure'
+}));
+  
+// Success 
+app.get('/auth/callback/success' , (req , res) => {
+    if(!req.user)
+        res.redirect('/auth/callback/failure');
+    
+    name=(req.user.displayName);
+    email=(req.user.email);
+    
+    res.render('products');
+    
+    
+});
+  
+// failure
+app.get('/auth/callback/failure' , (req , res) => {
+    res.send("Error");
+})
 
-    console.log('server running at port 3000');
+
+app.listen(4000, () => {
+
+    console.log('server running at port 4000');
 })

@@ -132,12 +132,14 @@ img {
 .sub-btn{
 
     margin-top: 10px;
-    height:35px;
-    width: 150px;
+    height:50px;
+    width: 190px;
     transition: 0.5s ease;
     font-weight: bold;
-    border: 2px solid black;
-    border-radius: 5px
+    border: thin solid #888;
+    box-shadow: 1px 1px 1px grey;
+    border-radius: 5px;
+    text-decoration: none;
     
 }
 
@@ -147,7 +149,7 @@ img {
     color: green;
     border: 2px solid orangered;
     border-radius: 5px;
-    width: 200px;
+    /* width: 200px; */
     background-color: #fff;
     
 }
@@ -318,3 +320,64 @@ margin-top: 10px;
     padding-left: 10%;
     
 }
+
+/* /////////////google button css */
+#customBtn {
+    display: inline-block;
+    background: white;
+    color: #444;
+    width: 190px;
+    border-radius: 5px;
+    border: thin solid #888;
+    box-shadow: 1px 1px 1px grey;
+    white-space: nowrap;
+  }
+  #customBtn:hover {
+    cursor: pointer;
+  }
+  span.label {
+    font-family: serif;
+    font-weight: normal;
+  }
+  span.icon {
+    background: url('./google.png') transparent 5px 50% no-repeat;
+    display: inline-block;
+    vertical-align: middle;
+    
+    width: 50px;
+    height: 50px;
+  }
+  span.buttonText {
+    display: inline-block;
+    vertical-align: middle;
+    padding-left: 4px;
+    padding-right: 0px;
+    font-size: 14px;
+    font-weight: bold;
+    /* Use the Roboto font that is loaded in the <head> */
+    font-family: 'Edu QLD Beginner', cursive;
+  }
+  .google{
+
+    margin-top: -5px;
+    height: 50px;
+    width: 190px;
+    transition: 0.5s ease;
+    font-weight: bold;
+    border: thin solid #888;
+    box-shadow: 1px 1px 1px grey;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-left: 34%;
+    /* background-color: #444; */
+  }
+  span.buttonText:hover{
+
+    color: black;
+
+  }
+
+  .google:hover{
+
+    background-color: wheat;
+  }
