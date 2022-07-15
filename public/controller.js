@@ -2,6 +2,8 @@ var nodemailer = require('nodemailer');
 const express = require('express');
 const app = express();
 app.set('view engine', 'ejs');
+require('dotenv').config()
+
 
 function totalCost(){
 
@@ -63,8 +65,8 @@ const transporter = nodemailer.createTransport({
   host: 'smtp.hostinger.com',
   port: 465,
   auth: {
-      user: 'info@chardeevari.in',
-      pass: 'AbhinavAyush@9'
+      user: process.env.EMAIL_ID,
+      pass: process.env.PASSWORD
   }
 });
 

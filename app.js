@@ -8,6 +8,7 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const cookieSession = require('cookie-session');
 require('./passport');
+require('dotenv').config()
 
 const sendEmail = require(__dirname + '/public/controller.js');
 var total = "";
@@ -162,4 +163,6 @@ app.get('/auth/callback/failure' , (req , res) => {
 app.listen(4000, () => {
 
     console.log('server running at port 4000');
+    
+    
 })
