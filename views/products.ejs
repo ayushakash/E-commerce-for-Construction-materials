@@ -5,45 +5,77 @@
                 <img class="card-img-top" src="/mortar1.jpg" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">Mortar</h5>
-                        <input type="hidden" id="custId" name="name" value="mortar">
+                        <p>Price : 5000</p>
+                        <input type="hidden" id="custId"  value="mortar">
 
-                            <input type="number" placeholder="enter quantity" name="mortar">
+                            <input type="number" placeholder="enter quantity" name="mortar"  id="m">
 
-                                <button class="sub-btn" type="submit" onclick="change()" id="btn">Add to Cart</button>
-                                
+                                <button class="addToCart"  onclick="getValue()" id="btn" >Add to Cart</button>
+
                             </div>
                         </div>
                         <div class="card">
                             <img class="card-img-top" src="/cement1.jpg" alt="Card image cap">
                                 <div class="card-body">
                                     <h5 class="card-title">Cement</h5>
+                                    <p>Price : 350</p>
+                                    <input type="number" placeholder="enter quantity" name="cement"id="m1">
+                                        <button class="addToCart" type="submit" onclick="getValue1()" id="btn1">Add to Cart</button>
 
-                                    <input type="number" placeholder="enter quantity" name="cement">
-                                        <button class="sub-btn" type="submit" onclick="change1()" id="btn1">Add to Cart</button>
-                                        
                                     </div>
                                 </div>
                                 <div class="card">
                                     <img class="card-img-top" src="/steel1.jpg" alt="Card image cap">
                                         <div class="card-body">
                                             <h5 class="card-title">Steel</h5>
+                                            <p>Price : 500</p>
+                                            <input type="number" placeholder="enter quantity" name="steel" id="m2">
+                                                <button class="addToCart" type="submit" onclick="getValue2()" id="btn2">Add to Cart</button>
 
-                                            <input type="number" placeholder="enter quantity" name="steel">
-                                                <button class="sub-btn" type="submit" onclick="change2()" id="btn2">Add to Cart</button>
-                                                
                                             </div>
                                         </div>
                                         <div class="card">
                                             <img class="card-img-top" src="/ring.jpg" alt="Card image cap">
                                                 <div class="card-body">
                                                     <h5 class="card-title">Stirrups</h5>
+                                                    <p>Price : 30</p>
+                                                    <input type="number" placeholder="enter quantity" name="ring" id="m3">
+                                                        <button class="addToCart" type="submit" onclick="getValue3()" id="btn3">Add to Cart</button>
 
-                                                    <input type="number" placeholder="enter quantity" name="ring">
-                                                        <button class="sub-btn" type="submit" onclick="change3()" id="btn3">Add to Cart</button>
-                                                        
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </form>
+                                                <div class="card">
+                                                    <img class="card-img-top" src="/putty.jpg" alt="Card image cap">
+                                                        <div class="card-body">
+                                                            <h5 class="card-title">Putty</h5>
+                                                            <p>Price : 400</p>
+                                                            <input type="number" placeholder="enter quantity" name="putty"id="m4">
+                                                                <button class="addToCart" type="submit" onclick="getValue4()" id="btn4">Add to Cart</button>
 
-                                        <%- include('footer'); -%>
+                                                            </div>
+                                                        </div>
+                                                        <div class="card">
+                                                            <img class="card-img-top" src="/paint.jpg" alt="Card image cap">
+                                                                <div class="card-body">
+                                                                    <h5 class="card-title">Paint</h5>
+                                                                    <p>Price : 3000<p/>
+                                                                    <input type="number" placeholder="enter quantity" name="paint"id="m5">
+                                                                        <button class="addToCart" type="submit" onclick="getValue5()" id="btn5">Add to Cart</button>
+
+                                                                    </div>
+                                                                </div>
+                                                                <div class="card">
+                                                                    <img class="card-img-top" src="/wire.jpg" alt="Card image cap">
+                                                                        <div class="card-body">
+                                                                            <h5 class="card-title">Wire</h5>
+                                                                            <p>Price : 800</p>
+                                                                            <input type="number" placeholder="enter quantity" name="wire" id="m6">
+                                                                                <button class="addToCart" type="submit" onclick="getValue6()" id="btn6">Add to Cart</button>
+
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </form>
+                                                                <iframe id="uploader_iframe" name="/products" style="display: none;"></iframe>
+
+                                                                <%- include('footer'); -%>

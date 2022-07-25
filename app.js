@@ -4,47 +4,80 @@ const bodyParser = require("body-parser");
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + '/public'));
-const mongoose = require('mongoose');
+const User = require("./mongo");
 const passport = require('passport');
 const cookieSession = require('cookie-session');
+// const { totalCost } = require('./public/controller');
 require('./passport');
 require('dotenv').config()
 
 const sendEmail = require(__dirname + '/public/controller.js');
-var total = "";
-let mc,cc,sc,rc;
-;
-let name, email,phone,password,address;
+
+var total ;
+let mc,cc,sc,rc,wc,tc,pc;
+let name, email,phone,address;
 
 app.get('/', (req, res) => {
 
-    res.render('signup');
+    res.render('signup',{
+        error:""
+    });
 })
 
-app.post('/', (req, res) => {
+app.post('/', async(req, res) => {
+   
+   if(req.body.password == req.body.confirmPassword){
 
-    name = req.body.fname;
-    email = req.body.email;
-    phone = req.body.phone;
-    password = req.body.password;
-
-    console.log(name, email, phone, password);
-    res.render('login');
+    const user=new User(req.body);
+    try{ 
+     await  user.save();
+     console.log('data saved');
+     res.render('login',{
+        error:""
+    });
+    }
+    catch (error) {
+     res.status(500).send(error);
+   }
+   
+   }
+   else{
+    res.render('signup',{
+        error:"Password and confirm password are not same"
+    });
+    res.send()
+   }
+    console.log(req.body);
+ 
+    
 })
 
 app.get('/login', (req, res) => {
 
-    res.render('login');
+    res.render('login',{
+        error:""
+    });
 })
 
-app.post('/login', (req, res) => {
+app.post('/login', async(req, res) => {
 
-    if ((req.body.email === email ) && (req.body.pwd === password )) {
+    let details=await User.find({email:req.body.email})
+    let finalPassword=details[0].password
+       name=details[0].name             
+       email=details[0].email           
+       phone=details[0].phone   
+               
+                             
+    // .select({password:1})
+    if (req.body.pwd == finalPassword ) {
         
         res.render('products');
+        
     } else {
 
-        res.send(`invalid id and pass`);
+        res.render('login',{
+            error:"Invalid ID or Password"
+        });
     }
 })
 
@@ -56,7 +89,7 @@ app.get('/products', (req, res) => {
 let x=` Your Total Order Value is : Rs `;
 
 app.get('/cart', (req, res) => {
-
+    
     res.render('cart', {
 
         y: x + total,
@@ -69,6 +102,7 @@ app.get('/cart', (req, res) => {
 app.post('/cart', (req, res) => {
 
     res.redirect('/cart');
+    
 
 })
 
@@ -81,30 +115,26 @@ app.get('/confirmed', (req, res) => {
 app.post('/confirmed', (req, res) => {
 
     address=req.body.address;
+    phone=req.body.phone;
     
-    console.log(address,email,name,total)
+    console.log(address,email,name,total,phone)
     res.redirect('confirmed');
-    sendEmail.sendEmail(name,email,total,address);
+    sendEmail.sendEmail(name,email,total,address,phone);
     
 
 })
 
 app.post('/products', (req, res) => {
     
-    function totalCost() {
-        var mortar = req.body.mortar;
-        var cement = req.body.cement;
-        var steel = req.body.steel;
-        var ring = req.body.ring;
-        mc = mortar * 5000;
-        cc = cement * 350;
-        sc = steel * 500;
-        rc = ring * 30;
-
-        total = mc + cc + sc + rc;
-
-    }
-    totalCost();
+    mc=(req.body.mortar)*5000
+    cc=(req.body.cement)*350
+    sc=(req.body.steel)*500
+    rc=(req.body.ring)*30
+    pc=(req.body.putty)*400
+    tc=(req.body.paint)*3000
+    wc=(req.body.wire)*800
+    total=mc+cc+sc+rc+pc+tc+wc;
+    
 
 })
 
@@ -148,8 +178,9 @@ app.get('/auth/callback/success' , (req , res) => {
     
     name=(req.user.displayName);
     email=(req.user.email);
+    phone='<input type="phone" class="inp" style="width:170px;" autocomplete="false" required="required" name="phone">';
     
-    res.render('products');
+    res.redirect('/products');
     
     
 });

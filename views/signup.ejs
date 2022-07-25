@@ -6,7 +6,7 @@
             <div class="input-box">
             
             <label for="name" class="lbl">Name</label><br>
-            <input type="text" class="inp"  required name="fname"><br>
+            <input type="text" class="inp"  required name="name"><br>
 
             <label for="email" class="lbl">Email</label><br>
             <input type="email" class="inp"  required name="email"><br>
@@ -16,10 +16,10 @@
             
 
             <label for="password" class="lbl">Password</label><br>
-            <input type="password" class="inp"  required><br>
+            <input type="password" class="inp"  required name="password"><br>
 
             <label for="confirm password" class="lbl">Confirm Password</label><br>
-            <input type="password" class="inp"  required name="password"><br>
+            <input type="password" class="inp"  required name="confirmPassword"><br>
             
             
             <button type="submit" class="sub-btn">Sign-Up</button>
@@ -27,7 +27,7 @@
         </div>
     </form>
     <button class="google"><span class="icon"></span><a href='/auth'><span class="buttonText"> Sign Up with Google</span></a></button>
-        
+    <h5> <%-error-%></h5>
         </div>
     </body>
 
