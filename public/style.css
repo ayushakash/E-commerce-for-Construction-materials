@@ -173,6 +173,11 @@ h1{
     margin-left: 42%;
     font-family: 'Edu QLD Beginner', cursive;
 }
+.error{
+    margin-left: 42%;
+    font-family: 'Edu QLD Beginner', cursive;
+    color:red;
+}
 
 .card1 {
     margin-top: 50px;

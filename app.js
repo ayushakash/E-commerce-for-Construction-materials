@@ -1,4 +1,5 @@
 const express = require('express');
+const fetch = require('node-fetch');
 const app = express();
 const bodyParser = require("body-parser");
 app.set('view engine', 'ejs');
@@ -10,12 +11,16 @@ const cookieSession = require('cookie-session');
 // const { totalCost } = require('./public/controller');
 require('./passport');
 require('dotenv').config()
+var cors = require('cors');
+app.use(cors());
 
 const sendEmail = require(__dirname + '/public/controller.js');
+
 
 var total ;
 let mc,cc,sc,rc,wc,tc,pc;
 let name, email,phone,address;
+let nearestStore;
 
 app.get('/', (req, res) => {
 
@@ -89,14 +94,25 @@ app.get('/products', (req, res) => {
 let x=` Your Total Order Value is : Rs `;
 
 app.get('/cart', (req, res) => {
+
+    console.log(name,email);
+    if(email==undefined || name==undefined){
+        res.render('login',{
+            error:"Login before going to cart"
+        });
+
+    }
+    else{
     
     res.render('cart', {
 
         y: x + total,
         name: name,
         email: email,
-        phone: phone
+        phone: phone,
+        store: nearestStore
     });
+}
 })
 
 app.post('/cart', (req, res) => {
@@ -108,7 +124,8 @@ app.post('/cart', (req, res) => {
 
 app.get('/confirmed', (req, res) => {
 
-    res.render('confirmed');
+    res.render('confirmed')
+    
 
 })
 
@@ -117,9 +134,72 @@ app.post('/confirmed', (req, res) => {
     address=req.body.address;
     phone=req.body.phone;
     
+    
     console.log(address,email,name,total,phone)
     res.redirect('confirmed');
-    sendEmail.sendEmail(name,email,total,address,phone);
+    
+    getStore(address);
+    function getStore(address) {
+        
+        let res =  fetch(
+            "http://www.mapquestapi.com/directions/v2/routematrix?key=PM9unQ5sdswrknRGzNISm" +
+                    "lMpikyVVDdT",
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    "locations": [
+                        address, "23.378732249246667, 85.3160366412092", "23.364586966335754, 85.34531899703113", "23.35233724078064, 85.31640959847162", "23.326090622203424, 85.30733395329207"
+                    ],
+                    "options": {
+                        "allToAll": false
+                    }
+                })
+            }
+        )
+            .then(res => res.json())
+            .then(data => {
+    
+                let output = JSON.stringify(data);
+    
+                // let [s0, s1, s2, s3, s4] = (data.distance);
+                let s0=data.distance[0];
+                let s1=data.distance[1];
+                let s2=data.distance[2];
+                let s3=data.distance[3];
+                let s4=data.distance[4];
+    
+                // console.log(s0, s1, s2, s3, s4)
+    
+                destructuring(s1, s2, s3, s4);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+    
+        function destructuring(s1, s2, s3, s4) {
+    
+            var store = {
+                "Cement House,Upper Bazar": s1,
+                "Siddhi Vinayak,Kanta Toli": s2,
+                "Mishra Traders,Kadru": s3,
+                "Sana Traders,Birsa Chowk": s4
+            };
+            let storeSorted = Object
+                .keys(store)
+                .sort(function (a, b) {
+                    return store[a] - store[b]
+                })
+            console.log(storeSorted[0]);
+            nearestStore=storeSorted[0];
+            sendEmail.sendEmail(name,email,total,address,phone,nearestStore);
+    
+        }
+    
+    }
+    
     
 
 })
@@ -134,6 +214,8 @@ app.post('/products', (req, res) => {
     tc=(req.body.paint)*3000
     wc=(req.body.wire)*800
     total=mc+cc+sc+rc+pc+tc+wc;
+    res.redirect('products')
+    console.log(total);
     
 
 })
@@ -150,6 +232,30 @@ app.get('/extra', (req, res) => {
     });
 })
 
+app.post('/location',async (req,res)=>{
+
+    // res.setHeader('Content-Type', 'application/x-www-form-urlencoded');
+    let userLocation=await(JSON.stringify(req.body.address))
+    console.log(userLocation);
+
+    
+    // await getStore(Body);
+
+   
+
+    // res.send({' Status': 'Sent'})
+
+    // res.render('cart', {
+
+    //     y: x + total,
+    //     name: name,
+    //     email: email,
+    //     phone: phone,
+    //     store: nearestStore
+    // });
+
+
+})
 ////////////////////google page apis///////////////////////
 app.use(cookieSession({
     name: 'google-auth-session',
